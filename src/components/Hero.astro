@@ -7,6 +7,7 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
 const slideCount = 19;
+const slideIndices = Array.from({length: slideCount}, (_, i) => i + 1).sort(() => Math.random() - 0.5);
 const slideDuration = 5; // seconds
 const totalDuration = slideCount * slideDuration;
 const visiblePercent = (slideDuration / totalDuration) * 100;
@@ -38,13 +39,13 @@ const slideStyles = Array.from({length: slideCount}).map((_, i) =>
   
   <!-- Slideshow Background -->
   <div class="absolute inset-0 w-full h-full z-0 overflow-hidden">
-    {Array.from({length: slideCount}).map((_, i) => (
-      <img src={`/hero-slides/slide${i + 1}.jpg`} class="slide absolute inset-0 w-full h-full object-cover" alt={`Background ${i + 1}`} loading={i > 0 ? "lazy" : "eager"} />
+    {slideIndices.map((slideIndex, index) => (
+      <img src={`/hero-slides/slide${slideIndex}.jpg`} class="slide absolute inset-0 w-full h-full object-cover" alt={`Background ${index + 1}`} loading={index > 0 ? "lazy" : "eager"} />
     ))}
   </div>
   
   <!-- Dark Gradient Overlay (Darkens left side for text readability) -->
-  <div class="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/70 to-slate-900/20 z-0"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-950 from-10% via-slate-950/80 via-45% to-slate-900/20 z-0"></div>
   
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -55,7 +56,7 @@ const slideStyles = Array.from({length: slideCount}).map((_, i) =>
           {t('hero.badge')}
         </div>
         
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 hero-anim opacity-0 translate-y-4">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-[1.1] tracking-tight mb-6 hero-anim opacity-0 translate-y-4">
           {t('hero.title.1')} <br/>
           <span class="text-accent-light">{t('hero.title.2')}</span>
         </h1>

@@ -14,21 +14,51 @@ export const ui = {
     'nav.careers': 'Lavora con noi',
     'nav.client_portal': 'Area Clienti',
     'nav.get_started': 'Inizia Ora',
-    
-    'hero.badge': 'Scelti dalle migliori aziende',
-    'hero.title.1': 'IT Strategico per',
-    'hero.title.2': 'Aziende in Crescita.',
-    'hero.subtitle': 'Progettiamo, implementiamo e gestiamo soluzioni tecnologiche di livello enterprise. Migliora la tua efficienza operativa con consulenza ed esecuzione esperta.',
+
+    'hero.badge': 'Scelti da aziende leader in ogni settore',
+    'hero.title.1': 'Trasformazione Digitale',
+    'hero.title.2': 'Resa Semplice',
+    'hero.subtitle': 'Sunnyvale S.r.l. è una società italiana che opera nel campo dell’Information & Communication Technology, partner d’eccellenza per la Trasformazione Digitale della tua impresa.',
     'hero.cta.primary': 'Prenota una Consulenza',
     'hero.cta.secondary': 'Scopri i Servizi',
     'hero.proof.rating': 'Valutazione 4.9/5',
     'hero.proof.text': 'da oltre 200 clienti enterprise',
-    
+    'trust.title': 'SCELTI DA AZIENDE LEADER IN OGNI SETTORE',
+
+    'testimo.tag': 'Casi di Successo',
+    'testimo.title': 'Non fidarti solo della nostra parola.',
+    'testimo.subtitle': 'Collaboriamo con i leader del settore per fornire infrastrutture critiche che migliorano l\'efficienza e proteggono i dati.',
+
+    'testimo.1.quote': '"Con Sunnyvale abbiamo trovato un partner serio e competente. I backup sono affidabili e l’assistenza, sempre disponibile, ci garantiscono maggiore tranquillità."',
+    'testimo.1.author': 'Esen Muti',
+    'testimo.1.role': 'ICT Executive, Step S.p.a.',
+    'testimo.1.logo': 'step.png',
+
+    'testimo.2.quote': '"Con un mix di competenze che spazia dalle architetture Cloud ai sistemi legacy, Sunnyvale ci aiuta ad evolvere la nostra infrastruttura per trarre il massimo beneficio dalla trasformazione digitale, consigliati!"',
+    'testimo.2.author': 'Marco Biscardi',
+    'testimo.2.role': 'Business Unit Manager, Go Reply',
+    'testimo.2.logo': 'reply.png',
+
+    'testimo.3.quote': '"Grazie a Sunnyvale abbiamo portato la nostra practice DevOps ad un livello superiore, introducendo l\'Infrastructure as Code. Ci hanno guidato con tantissima professionalità e competenza in ogni fase del progetto. Consigliamo vivamente Sunnyvale a chiunque cerchi un partner affidabile."',
+    'testimo.3.author': 'Rolando Pasqualin',
+    'testimo.3.role': 'Digital Transformation Project Manager, Boscolo Tours Spa',
+    'testimo.3.logo': 'boscolo.png',
+
+    'testimo.4.quote': '"Sunnyvale, un’azienda fatta da persone - talenti di grande valore, capaci di trasformare l’ambizione in realtà. Noi scegliamo Sunnyvale perché il nostro obiettivo è quello di guardare il mondo di oggi con gli occhi di domani."',
+    'testimo.4.author': 'Andrè Dominic Santacroce',
+    'testimo.4.role': 'Technical Team Leader, Roar Technologies Inc.',
+    'testimo.4.logo': 'roar.png',
+
+    'testimo.5.quote': '"Grande apporto sui temi DevOps, Infrastructure as Code e zero-trust security per sistemi Cloud, avere Sunnyvale come partner specializzato ci aiuta a vincere le sfide dei nostri clienti, fondamentali!"',
+    'testimo.5.author': 'Artiom Lihodei',
+    'testimo.5.role': 'Technology Manager, Acus S.p.a.',
+    'testimo.5.logo': 'acus.png',
+
     'services.header.tag': 'I Nostri Servizi',
     'services.header.title': 'Soluzioni IT complete per le aziende moderne.',
     'services.header.view_all': 'Vedi tutti i servizi',
     'services.learn_more': 'Scopri di più',
-    
+
     'services.1.title': 'Strategia IT e Consulenza',
     'services.1.desc': 'Allinea i tuoi investimenti tecnologici agli obiettivi di business. Offriamo guida di livello esecutivo per la trasformazione digitale.',
     'services.2.title': 'Infrastruttura Cloud',
@@ -41,7 +71,7 @@ export const ui = {
     'services.5.desc': 'Sblocca il valore dei tuoi dati. Implementiamo data lake e integriamo modelli di intelligenza artificiale predittiva.',
     'services.6.title': 'Servizi IT Gestiti',
     'services.6.desc': 'Garantisci la business continuity con supporto proattivo 24/7, manutenzione dei sistemi e gestione tecnica dedicata.',
-    
+
     'footer.description': 'Progettiamo soluzioni IT scalabili, performanti e sicure per la prossima generazione di imprese digitali.',
     'footer.services': 'Servizi',
     'footer.company': 'Azienda',
@@ -58,21 +88,51 @@ export const ui = {
     'nav.careers': 'Careers',
     'nav.client_portal': 'Client Portal',
     'nav.get_started': 'Get Started',
-    
-    'hero.badge': 'Trusted by Fortune 500 Companies',
-    'hero.title.1': 'Strategic IT for',
-    'hero.title.2': 'Growing Firms.',
-    'hero.subtitle': 'We architect, deploy, and manage enterprise-grade technology solutions. Elevate your operational efficiency with expert advisory and execution.',
+
+    'hero.badge': 'Trusted by industry leaders in every sector',
+    'hero.title.1': 'Digital Transformation',
+    'hero.title.2': 'Made Simple',
+    'hero.subtitle': 'Sunnyvale S.r.l. is an Italian company operating in the field of Information & Communication Technology, an excellent partner for the Digital Transformation of your business.',
     'hero.cta.primary': 'Book a Consultation',
     'hero.cta.secondary': 'View Capabilities',
     'hero.proof.rating': '4.9/5 Rating',
     'hero.proof.text': 'from 200+ enterprise clients',
-    
+    'trust.title': 'TRUSTED BY INDUSTRY LEADERS IN EVERY SECTOR',
+
+    'testimo.tag': 'Client Success',
+    'testimo.title': "Don't just take our word for it.",
+    'testimo.subtitle': 'We partner with industry leaders to deliver mission-critical infrastructure that drives revenue and secures data.',
+
+    'testimo.1.quote': '"With Sunnyvale we found a serious and competent partner. The backups are reliable and the assistance, always available, guarantees us greater peace of mind."',
+    'testimo.1.author': 'Esen Muti',
+    'testimo.1.role': 'ICT Executive, Step S.p.a.',
+    'testimo.1.logo': 'step.png',
+
+    'testimo.2.quote': '"With a mix of skills ranging from Cloud architectures to legacy systems, Sunnyvale helps us evolve our infrastructure to get the maximum benefit from digital transformation, highly recommended!"',
+    'testimo.2.author': 'Marco Biscardi',
+    'testimo.2.role': 'Business Unit Manager, Go Reply',
+    'testimo.2.logo': 'reply.png',
+
+    'testimo.3.quote': '"Thanks to Sunnyvale we have taken our DevOps practice to the next level, introducing Infrastructure as Code. They guided us with great professionalism and competence in every phase of the project. We highly recommend Sunnyvale to anyone looking for a reliable partner."',
+    'testimo.3.author': 'Rolando Pasqualin',
+    'testimo.3.role': 'Digital Transformation Project Manager, Boscolo Tours Spa',
+    'testimo.3.logo': 'boscolo.png',
+
+    'testimo.4.quote': '"Sunnyvale, a company made up of people - highly valuable talents, capable of turning ambition into reality. We choose Sunnyvale because our goal is to look at today\'s world with tomorrow\'s eyes."',
+    'testimo.4.author': 'Andrè Dominic Santacroce',
+    'testimo.4.role': 'Technical Team Leader, Roar Technologies Inc.',
+    'testimo.4.logo': 'roar.png',
+
+    'testimo.5.quote': '"Great contribution on DevOps, Infrastructure as Code and zero-trust security for Cloud systems, having Sunnyvale as a specialized partner helps us win our clients\' challenges, fundamental!"',
+    'testimo.5.author': 'Artiom Lihodei',
+    'testimo.5.role': 'Technology Manager, Acus S.p.a.',
+    'testimo.5.logo': 'acus.png',
+
     'services.header.tag': 'Our Services',
     'services.header.title': 'Comprehensive IT Solutions for Modern Enterprises.',
     'services.header.view_all': 'View All Services',
     'services.learn_more': 'Learn more',
-    
+
     'services.1.title': 'IT Strategy & Advisory',
     'services.1.desc': 'Align your technology investments with your business goals. We provide executive-level guidance to navigate digital transformation.',
     'services.2.title': 'Cloud Infrastructure',
@@ -85,7 +145,7 @@ export const ui = {
     'services.5.desc': 'Unlock the value of your data. We implement enterprise data lakes and integrate predictive AI models into your workflows.',
     'services.6.title': 'Managed IT Services',
     'services.6.desc': 'Ensure business continuity with 24/7 proactive support, system maintenance, and dedicated technical account management.',
-    
+
     'footer.description': 'We architect scalable, performant, and secure IT solutions for the next generation of digital enterprises.',
     'footer.services': 'Services',
     'footer.company': 'Company',
