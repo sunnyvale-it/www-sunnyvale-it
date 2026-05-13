@@ -5,37 +5,70 @@ import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/util
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
+
+const slideCount = 19;
+const slideDuration = 5; // seconds
+const totalDuration = slideCount * slideDuration;
+const visiblePercent = (slideDuration / totalDuration) * 100;
+const fadePercent = visiblePercent * 0.2; // 20% of slide time is fading
+
+// Generate slide animation delays
+const slideStyles = Array.from({length: slideCount}).map((_, i) => 
+  `.slide:nth-child(${i + 1}) { animation-delay: ${i * slideDuration}s; }`
+).join('\n  ');
 ---
 
-<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-surface">
-  <!-- Video Background -->
-  <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none mix-blend-multiply">
-    <source src="/tech-bg.mp4" type="video/mp4" />
-  </video>
+<style set:html={`
+  .slide {
+    opacity: 0;
+    animation: fade ${totalDuration}s infinite ease-in-out;
+  }
+  ${slideStyles}
+
+  @keyframes fade {
+    0% { opacity: 0; transform: scale(1.05); }
+    ${fadePercent}% { opacity: 1; transform: scale(1.02); }
+    ${visiblePercent}% { opacity: 1; transform: scale(1); }
+    ${visiblePercent + fadePercent}% { opacity: 0; transform: scale(1.05); }
+    100% { opacity: 0; }
+  }
+`}></style>
+
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-900">
+  
+  <!-- Slideshow Background -->
+  <div class="absolute inset-0 w-full h-full z-0 overflow-hidden">
+    {Array.from({length: slideCount}).map((_, i) => (
+      <img src={`/hero-slides/slide${i + 1}.jpg`} class="slide absolute inset-0 w-full h-full object-cover" alt={`Background ${i + 1}`} loading={i > 0 ? "lazy" : "eager"} />
+    ))}
+  </div>
+  
+  <!-- Dark Gradient Overlay (Darkens left side for text readability) -->
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/70 to-slate-900/20 z-0"></div>
   
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
       
       <div class="max-w-2xl">
-        <div class="badge mb-6 hero-anim opacity-0 translate-y-4">
-          <span class="w-2 h-2 rounded-full bg-accent mr-2"></span>
+        <div class="badge mb-6 hero-anim opacity-0 translate-y-4 border border-white/20 bg-white/5 text-white backdrop-blur-sm">
+          <span class="w-2 h-2 rounded-full bg-accent mr-2 shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
           {t('hero.badge')}
         </div>
         
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-primary leading-[1.1] mb-6 hero-anim opacity-0 translate-y-4">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 hero-anim opacity-0 translate-y-4">
           {t('hero.title.1')} <br/>
-          <span class="text-accent">{t('hero.title.2')}</span>
+          <span class="text-accent-light">{t('hero.title.2')}</span>
         </h1>
         
-        <p class="text-lg text-foreground-muted mb-10 max-w-lg leading-relaxed hero-anim opacity-0 translate-y-4">
+        <p class="text-lg text-slate-300 mb-10 max-w-lg leading-relaxed hero-anim opacity-0 translate-y-4">
           {t('hero.subtitle')}
         </p>
         
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 hero-anim opacity-0 translate-y-4">
-          <a href={translatePath('#consultation')} class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-accent hover:bg-accent-dark rounded transition-colors shadow-lg shadow-accent/20 w-full sm:w-auto">
+          <a href={translatePath('#contact')} class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-accent hover:bg-accent-dark rounded transition-colors shadow-lg shadow-accent/20 w-full sm:w-auto">
             {t('hero.cta.primary')}
           </a>
-          <a href={translatePath('#services')} class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-primary bg-white hover:bg-surface-hover border border-border rounded transition-colors w-full sm:w-auto">
+          <a href={translatePath('#services')} class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded transition-colors w-full sm:w-auto">
             {t('hero.cta.secondary')}
             <Icon name="lucide:arrow-right" class="w-4 h-4 ml-2" />
           </a>
@@ -44,56 +77,54 @@ const translatePath = useTranslatedPath(lang);
         <!-- Quick Proof -->
         <div class="mt-12 flex items-center gap-6 hero-anim opacity-0 translate-y-4">
           <div class="flex -space-x-4">
-            <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200"></div>
-            <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-300"></div>
-            <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-400"></div>
+            <div class="w-10 h-10 rounded-full border-2 border-slate-800 bg-slate-300"></div>
+            <div class="w-10 h-10 rounded-full border-2 border-slate-800 bg-slate-400"></div>
+            <div class="w-10 h-10 rounded-full border-2 border-slate-800 bg-slate-500"></div>
           </div>
-          <div class="text-sm text-foreground-muted">
-            <span class="font-bold text-primary block">{t('hero.proof.rating')}</span>
+          <div class="text-sm text-slate-300">
+            <span class="font-bold text-white block">{t('hero.proof.rating')}</span>
             {t('hero.proof.text')}
           </div>
         </div>
       </div>
 
-      <!-- Hero Visual -->
-      <div class="relative lg:h-[600px] flex items-center justify-center hero-img opacity-0 translate-x-8">
-        <div class="w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-border p-8 relative z-10">
-          <div class="flex justify-between items-center mb-8 border-b border-border pb-4">
+      <!-- Hero Visual (Hidden on mobile to let the background shine, shown on desktop with glassmorphism) -->
+      <div class="hidden lg:flex relative h-[600px] items-center justify-center hero-img opacity-0 translate-x-8">
+        <div class="w-full max-w-lg bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 p-8 relative z-10 text-white">
+          <div class="flex justify-between items-center mb-8 border-b border-white/20 pb-4">
             <div>
-              <div class="text-sm font-semibold text-foreground-muted">Q3 Performance</div>
-              <div class="text-3xl font-bold text-primary mt-1">+124.5%</div>
+              <div class="text-sm font-semibold text-slate-300">Q3 Performance</div>
+              <div class="text-3xl font-bold text-white mt-1">+124.5%</div>
             </div>
-            <div class="w-12 h-12 rounded bg-accent/10 flex items-center justify-center">
-              <Icon name="lucide:trending-up" class="w-6 h-6 text-accent" />
+            <div class="w-12 h-12 rounded bg-white/10 flex items-center justify-center">
+              <Icon name="lucide:trending-up" class="w-6 h-6 text-accent-light" />
             </div>
           </div>
           
           <div class="space-y-4">
-            <div class="flex items-center justify-between p-4 bg-surface rounded-lg border border-border">
+            <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10">
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded bg-blue-100 flex items-center justify-center text-blue-600 font-bold">C</div>
+                <div class="w-10 h-10 rounded bg-blue-500/20 flex items-center justify-center text-blue-300 font-bold">C</div>
                 <div>
-                  <div class="font-semibold text-primary text-sm">{t('services.2.title')}</div>
-                  <div class="text-xs text-foreground-muted">Completed early</div>
+                  <div class="font-semibold text-white text-sm">{t('services.2.title')}</div>
+                  <div class="text-xs text-slate-400">Completed early</div>
                 </div>
               </div>
-              <Icon name="lucide:check-circle-2" class="w-5 h-5 text-green-500" />
+              <Icon name="lucide:check-circle-2" class="w-5 h-5 text-green-400" />
             </div>
             
-            <div class="flex items-center justify-between p-4 bg-surface rounded-lg border border-border">
+            <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10">
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded bg-purple-100 flex items-center justify-center text-purple-600 font-bold">S</div>
+                <div class="w-10 h-10 rounded bg-purple-500/20 flex items-center justify-center text-purple-300 font-bold">S</div>
                 <div>
-                  <div class="font-semibold text-primary text-sm">{t('services.3.title')}</div>
-                  <div class="text-xs text-foreground-muted">In progress</div>
+                  <div class="font-semibold text-white text-sm">{t('services.3.title')}</div>
+                  <div class="text-xs text-slate-400">In progress</div>
                 </div>
               </div>
-              <div class="w-5 h-5 rounded-full border-2 border-border border-t-accent animate-spin"></div>
+              <div class="w-5 h-5 rounded-full border-2 border-white/10 border-t-accent-light animate-spin"></div>
             </div>
           </div>
           
-          <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-[radial-gradient(var(--color-accent-light)_1px,transparent_1px)] [background-size:8px_8px] opacity-20 -z-10"></div>
-          <div class="absolute -top-6 -right-6 w-32 h-32 bg-[radial-gradient(var(--color-accent-light)_1px,transparent_1px)] [background-size:8px_8px] opacity-20 -z-10"></div>
         </div>
       </div>
       
