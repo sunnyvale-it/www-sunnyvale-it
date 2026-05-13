@@ -1,0 +1,75 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+
+const currentYear = new Date().getFullYear();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<footer class="bg-primary pt-20 pb-10 border-t border-slate-800">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
+      
+      <div class="lg:col-span-2">
+        <a href={translatePath('/')} class="flex items-center group mb-6 inline-flex">
+          <img src="/logo-white.png" alt="Sunnyvale Logo" class="h-10 object-contain" />
+        </a>
+        <p class="text-slate-400 text-sm leading-relaxed mb-8 max-w-sm">
+          {t('footer.description')}
+        </p>
+        <div class="flex items-center gap-4">
+          <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-accent hover:text-white transition-colors" aria-label="LinkedIn">
+            <Icon name="lucide:linkedin" class="w-4 h-4" />
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-accent hover:text-white transition-colors" aria-label="Twitter">
+            <Icon name="lucide:twitter" class="w-4 h-4" />
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-accent hover:text-white transition-colors" aria-label="GitHub">
+            <Icon name="lucide:github" class="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-white font-semibold mb-6">{t('footer.services')}</h3>
+        <ul class="space-y-4 text-sm text-slate-400">
+          <li><a href="#" class="hover:text-white transition-colors">{t('services.1.title')}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{t('services.2.title')}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{t('services.3.title')}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{t('services.5.title')}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{t('services.6.title')}</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-white font-semibold mb-6">{t('footer.company')}</h3>
+        <ul class="space-y-4 text-sm text-slate-400">
+          <li><a href="#" class="hover:text-white transition-colors">{t('nav.about')}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{t('nav.careers')}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{t('nav.case_studies')}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-white font-semibold mb-6">{t('footer.legal')}</h3>
+        <ul class="space-y-4 text-sm text-slate-400">
+          <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+    
+    <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-sm text-slate-500">
+      <p>&copy; {currentYear} Sunnyvale S.r.l. {t('footer.rights')}</p>
+      <p class="mt-2 md:mt-0 flex items-center gap-1">
+        {t('footer.built_with')} <Icon name="lucide:heart" class="w-4 h-4 text-accent" /> {t('footer.built_in')}
+      </p>
+    </div>
+  </div>
+</footer>

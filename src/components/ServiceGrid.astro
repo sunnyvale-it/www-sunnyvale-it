@@ -1,0 +1,106 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const services = [
+  {
+    title: t('services.1.title'),
+    description: t('services.1.desc'),
+    icon: "lucide:compass"
+  },
+  {
+    title: t('services.2.title'),
+    description: t('services.2.desc'),
+    icon: "lucide:cloud"
+  },
+  {
+    title: t('services.3.title'),
+    description: t('services.3.desc'),
+    icon: "lucide:shield"
+  },
+  {
+    title: t('services.4.title'),
+    description: t('services.4.desc'),
+    icon: "lucide:terminal"
+  },
+  {
+    title: t('services.5.title'),
+    description: t('services.5.desc'),
+    icon: "lucide:bar-chart-3"
+  },
+  {
+    title: t('services.6.title'),
+    description: t('services.6.desc'),
+    icon: "lucide:headphones"
+  }
+];
+---
+
+<section id="services" class="section-padding bg-white relative overflow-hidden">
+  <!-- Subtle Background Grid -->
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 service-header opacity-0 translate-y-4">
+      <div class="max-w-2xl">
+        <h2 class="text-sm font-bold text-accent uppercase tracking-widest mb-3">{t('services.header.tag')}</h2>
+        <h3 class="text-3xl md:text-5xl font-bold text-primary">{t('services.header.title')}</h3>
+      </div>
+      <a href="#all-services" class="inline-flex items-center gap-2 font-semibold text-accent hover:text-accent-dark transition-colors shrink-0">
+        {t('services.header.view_all')}
+        <Icon name="lucide:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div class="group p-8 rounded-2xl border border-border bg-surface hover:bg-white hover:shadow-xl hover:border-transparent transition-all duration-300 service-item opacity-0 translate-y-4">
+          <div class="w-14 h-14 rounded-xl bg-white border border-border flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-colors text-accent">
+            <Icon name={service.icon} class="w-7 h-7" />
+          </div>
+          <h4 class="text-xl font-bold text-primary mb-3">{service.title}</h4>
+          <p class="text-foreground-muted leading-relaxed mb-6">
+            {service.description}
+          </p>
+          <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-accent transition-colors">
+            {t('services.learn_more')}
+            <Icon name="lucide:arrow-right" class="w-4 h-4" />
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to(".service-header", {
+    scrollTrigger: {
+      trigger: "#services",
+      start: "top 80%",
+    },
+    y: 0,
+    opacity: 1,
+    duration: 0.8,
+    ease: "power3.out"
+  });
+
+  gsap.to(".service-item", {
+    scrollTrigger: {
+      trigger: "#services",
+      start: "top 70%",
+    },
+    y: 0,
+    opacity: 1,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: "power3.out"
+  });
+</script>

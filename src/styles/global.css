@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Looka Corporate Color Palette (Updated to Sunnyvale Navy) */
+  --color-primary: #1e204a; /* Deep Navy from logo for primary dark elements */
+  --color-accent: #2d306b; /* Sunnyvale Logo Blue */
+  --color-accent-light: #3f428c; /* Lighter Sunnyvale Blue */
+  --color-accent-dark: #1b1d42; /* Darker Sunnyvale Blue */
+  
+  --color-background: #ffffff;
+  --color-surface: #f8fafc; /* Slate 50 */
+  --color-surface-hover: #f1f5f9; /* Slate 100 */
+  
+  --color-foreground: #334155; /* Slate 700 for main text */
+  --color-foreground-heading: #0f172a; /* Slate 900 for headings */
+  --color-foreground-muted: #64748b; /* Slate 500 for secondary text */
+  
+  --color-border: #e2e8f0; /* Slate 200 */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-foreground-heading);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Custom Utilities for Corporate Aesthetic */
+@layer utilities {
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  
+  .glass-light {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: var(--color-surface);
+    color: var(--color-accent);
+    border: 1px solid var(--color-border);
+  }
+}

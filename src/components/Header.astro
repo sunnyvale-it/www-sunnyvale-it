@@ -1,0 +1,85 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<header class="fixed top-0 w-full z-50 glass-light transition-all duration-300" id="main-header">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    
+    <!-- Logo -->
+    <a href={translatePath('/')} class="flex items-center group">
+      <img src="/logo.png" alt="Sunnyvale Logo" class="h-10 object-contain" />
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
+      <a href={translatePath('/')} class="text-foreground-heading hover:text-accent transition-colors">{t('nav.home')}</a>
+      
+      <!-- Services Dropdown (Mega Menu simplified) -->
+      <div class="relative group">
+        <button class="flex items-center gap-1 text-foreground hover:text-accent transition-colors py-8">
+          {t('nav.services')}
+          <Icon name="lucide:chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180" />
+        </button>
+        <div class="absolute top-full left-0 w-64 bg-white border border-border rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+          <div class="p-4 flex flex-col gap-2">
+            <a href={translatePath('#strategy')} class="p-3 hover:bg-surface rounded-lg transition-colors group/link">
+              <div class="text-foreground-heading font-semibold group-hover/link:text-accent">{t('services.1.title')}</div>
+            </a>
+            <a href={translatePath('#cloud')} class="p-3 hover:bg-surface rounded-lg transition-colors group/link">
+              <div class="text-foreground-heading font-semibold group-hover/link:text-accent">{t('services.2.title')}</div>
+            </a>
+            <a href={translatePath('#security')} class="p-3 hover:bg-surface rounded-lg transition-colors group/link">
+              <div class="text-foreground-heading font-semibold group-hover/link:text-accent">{t('services.3.title')}</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href={translatePath('#about')} class="text-foreground hover:text-accent transition-colors">{t('nav.about')}</a>
+      
+      <!-- Language Switcher -->
+      <div class="flex items-center gap-2 border-l border-border pl-8">
+        <a href="/" class={`text-xs font-bold px-2 py-1 rounded transition-colors ${lang === 'it' ? 'bg-primary text-white' : 'text-foreground hover:bg-surface'}`}>IT</a>
+        <a href="/en/" class={`text-xs font-bold px-2 py-1 rounded transition-colors ${lang === 'en' ? 'bg-primary text-white' : 'text-foreground hover:bg-surface'}`}>EN</a>
+      </div>
+    </nav>
+
+    <!-- CTAs -->
+    <div class="flex items-center gap-4">
+      <a href={translatePath('#contact')} class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-primary hover:bg-primary/90 rounded transition-colors">
+        {t('nav.client_portal')}
+      </a>
+      <a href={translatePath('#contact')} class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-accent hover:bg-accent-dark rounded transition-colors shadow-sm">
+        {t('nav.get_started')}
+      </a>
+      
+      <!-- Mobile language & menu -->
+      <div class="flex lg:hidden items-center gap-3 border-l border-border pl-3">
+        <a href="/" class={`text-xs font-bold ${lang === 'it' ? 'text-primary' : 'text-foreground-muted'}`}>IT</a>
+        <a href="/en/" class={`text-xs font-bold ${lang === 'en' ? 'text-primary' : 'text-foreground-muted'}`}>EN</a>
+        <button class="text-primary ml-2">
+          <Icon name="lucide:menu" class="w-6 h-6" />
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Shrink header on scroll
+  ScrollTrigger.create({
+    start: "top -50",
+    end: 99999,
+    toggleClass: {className: "shadow-sm", targets: "#main-header"}
+  });
+</script>
