@@ -6,7 +6,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
-const slideCount = 19;
+const slideCount = 20;
 const slideIndices = Array.from({length: slideCount}, (_, i) => i + 1).sort(() => Math.random() - 0.5);
 const slideDuration = 5; // seconds
 const totalDuration = slideCount * slideDuration;

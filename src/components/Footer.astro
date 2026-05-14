@@ -33,33 +33,29 @@ const translatePath = useTranslatedPath(lang);
       </div>
 
       <div>
-        <h3 class="text-white font-semibold mb-6">{t('footer.services')}</h3>
+        <h3 class="text-white font-semibold mb-6">{t('nav.solutions')}</h3>
         <ul class="space-y-4 text-sm text-slate-400">
-          <li><a href="#" class="hover:text-white transition-colors">{t('services.1.title')}</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">{t('services.2.title')}</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">{t('services.3.title')}</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">{t('services.5.title')}</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">{t('services.6.title')}</a></li>
+          <li><a href={translatePath('/soluzioni/cloud-computing')} class="hover:text-white transition-colors">{t('nav.sol.cloud')}</a></li>
+          <li><a href={translatePath('/soluzioni/platform-engineering')} class="hover:text-white transition-colors">{t('nav.sol.platform')}</a></li>
+          <li><a href={translatePath('/soluzioni/cybersecurity')} class="hover:text-white transition-colors">{t('nav.sol.security')}</a></li>
+          <li><a href={translatePath('/soluzioni/dati-e-ia')} class="hover:text-white transition-colors">{t('nav.sol.data_ai')}</a></li>
         </ul>
       </div>
 
       <div>
         <h3 class="text-white font-semibold mb-6">{t('footer.company')}</h3>
         <ul class="space-y-4 text-sm text-slate-400">
-          <li><a href="#" class="hover:text-white transition-colors">{t('nav.about')}</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">{t('nav.careers')}</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">{t('nav.case_studies')}</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+          <li><a href={translatePath('/chi-siamo')} class="hover:text-white transition-colors">{t('nav.about')}</a></li>
+          <li><a href={translatePath('/clienti')} class="hover:text-white transition-colors">{t('nav.clients')}</a></li>
+          <li><a href={translatePath('/contatti')} class="hover:text-white transition-colors">{t('nav.contact')}</a></li>
         </ul>
       </div>
 
       <div>
         <h3 class="text-white font-semibold mb-6">{t('footer.legal')}</h3>
         <ul class="space-y-4 text-sm text-slate-400">
-          <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
+          <li><a href={translatePath('/privacy-policy')} class="hover:text-white transition-colors">{t('footer.privacy')}</a></li>
+          <li><a href={translatePath('/cookie-policy')} class="hover:text-white transition-colors">{t('footer.cookie')}</a></li>
         </ul>
       </div>
 

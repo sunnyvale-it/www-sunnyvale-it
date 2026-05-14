@@ -1,0 +1,24 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="Data & AI | Sunnyvale S.r.l.">
+  <Header />
+  
+  <main class="pt-32 pb-20 min-h-[70vh] bg-surface flex items-center justify-center">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6">Data & AI</h1>
+      <p class="text-lg text-foreground-muted max-w-2xl mx-auto">
+        ${lang === 'it' ? 'Questa è una pagina provvisoria per' : 'This is a placeholder page for'} Data & AI.
+      </p>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>

@@ -1,40 +1,35 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 
 const services = [
   {
     title: t('services.1.title'),
     description: t('services.1.desc'),
-    icon: "lucide:compass"
+    icon: "lucide:cloud",
+    link: "/soluzioni/cloud-computing"
   },
   {
     title: t('services.2.title'),
     description: t('services.2.desc'),
-    icon: "lucide:cloud"
+    icon: "lucide:layers",
+    link: "/soluzioni/platform-engineering"
   },
   {
     title: t('services.3.title'),
     description: t('services.3.desc'),
-    icon: "lucide:shield"
+    icon: "lucide:shield-check",
+    link: "/soluzioni/cybersecurity"
   },
   {
     title: t('services.4.title'),
     description: t('services.4.desc'),
-    icon: "lucide:terminal"
-  },
-  {
-    title: t('services.5.title'),
-    description: t('services.5.desc'),
-    icon: "lucide:bar-chart-3"
-  },
-  {
-    title: t('services.6.title'),
-    description: t('services.6.desc'),
-    icon: "lucide:headphones"
+    icon: "lucide:brain-circuit",
+    link: "/soluzioni/dati-e-ia"
   }
 ];
 ---
@@ -63,21 +58,21 @@ const services = [
       </a>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 gap-8">
       {services.map((service) => (
-        <div class="group p-8 rounded-2xl border border-border bg-surface hover:bg-white hover:shadow-xl hover:border-transparent transition-all duration-300 service-item opacity-0 translate-y-4">
-          <div class="w-14 h-14 rounded-xl bg-white border border-border flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-colors text-accent">
+        <a href={translatePath(service.link)} class="group p-8 rounded-2xl border border-border bg-surface hover:bg-white hover:shadow-xl hover:border-transparent transition-all duration-300 service-item opacity-0 translate-y-4 no-underline outline-none flex flex-col h-full">
+          <div class="w-14 h-14 rounded-xl bg-white border border-border flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-colors text-accent shrink-0">
             <Icon name={service.icon} class="w-7 h-7" />
           </div>
           <h4 class="text-xl font-bold text-primary mb-3">{service.title}</h4>
-          <p class="text-foreground-muted leading-relaxed mb-6">
+          <p class="text-foreground-muted leading-relaxed mb-6 flex-grow">
             {service.description}
           </p>
-          <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-accent transition-colors">
+          <div class="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-accent transition-colors mt-auto">
             {t('services.learn_more')}
             <Icon name="lucide:arrow-right" class="w-4 h-4" />
-          </a>
-        </div>
+          </div>
+        </a>
       ))}
     </div>
   </div>

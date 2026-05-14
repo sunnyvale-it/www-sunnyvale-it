@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+const clients = [
+  { file: "LM.png", url: "https://www.leroymerlin.it/", name: "Leroy Merlin" },
+  { file: "LogoFHD_4-1.png", url: "https://www.its-ictppiemonte.it/", name: "ITS ICT Piemonte" },
+  { file: "PUNCH-Softronix-2.png", url: "https://www.dumarey.com/", name: "Punch Softronix" },
+  { file: "acus.png", url: "https://www.acus.eu/", name: "Acus" },
+  { file: "argotec.png", url: "https://www.argotecgroup.com/", name: "Argotec" },
+  { file: "boscolo.png", url: "https://www.boscolo.com/", name: "Boscolo" },
+  { file: "bricocenter_color1.png", url: "https://www.bricocenter.it/", name: "Bricocenter" },
+  { file: "credit-data1.png", url: "https://creditdataresearch.com/", name: "Credit Data" },
+  { file: "dnata.png", url: "https://www.dnata.com/", name: "dnata" },
+  { file: "dum1.png", url: "https://www.dumarey.com/", name: "Dumarey" },
+  { file: "ett.png", url: "https://ettsolutions.com/", name: "ETT Solutions" },
+  { file: "intesa-sanpaolo.png", url: "https://www.intesasanpaolo.com/", name: "Intesa Sanpaolo" },
+  { file: "intesa-sanpaolo2.png", url: "https://www.internationalvalueservices.com", name: "Intesa Sanpaolo Value Services" },
+  { file: "ire_white_rightsize.png", url: "https://www.gruppoiren.it/", name: "Gruppo Iren" },
+  { file: "logo-mz-4.png", url: "https://www.mzb-group.com", name: "MZB Group" },
+  { file: "mauden_colore.png", url: "https://www.mauden.com/", name: "Mauden" },
+  { file: "oracle.png", url: "https://www.oracle.com/", name: "Oracle" },
+  { file: "reply.png", url: "https://www.reply.com/", name: "Reply" },
+  { file: "roar.png", url: "https://roartec.com/", name: "Roar Technologies" },
+  { file: "societe-general-1.png", url: "https://www.societegenerale.com/", name: "Societe Generale" },
+  { file: "step.png", url: "https://www.step.it/", name: "Step" },
+  { file: "tecnomat.png", url: "https://www.tecnomat.it/", name: "Tecnomat" },
+];
+---
+
+<Layout title="Clients | Sunnyvale S.r.l.">
+  <Header />
+  
+  <main class="pt-32 pb-32 min-h-screen bg-slate-50 relative overflow-hidden">
+    <!-- Catchy Background Effects -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-accent/10 blur-[120px]"></div>
+      <div class="absolute top-[40%] -right-[10%] w-[50%] h-[50%] rounded-full bg-blue-400/10 blur-[120px]"></div>
+      <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#0f172a 1px, transparent 1px); background-size: 32px 32px;"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-20 client-header opacity-0 translate-y-8">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-primary mb-6 tracking-tight">Our <span class="text-accent">Clients</span></h1>
+        <p class="text-xl text-foreground-muted leading-relaxed">
+          The most innovative enterprises choose Sunnyvale S.r.l. to build, scale, and secure their critical digital infrastructure.
+        </p>
+      </div>
+
+      <!-- Logo Wall Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {clients.map((client) => (
+          <a 
+            href={client.url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="group client-card opacity-0 translate-y-8 relative h-40 bg-white rounded-2xl border border-border shadow-sm hover:shadow-2xl hover:border-accent/30 transition-all duration-500 overflow-hidden flex items-center justify-center p-8 outline-none no-underline"
+          >
+            <!-- Hover Gradient Background -->
+            <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+            
+            <img
+              src={`/clients/${client.file}`}
+              class={`w-full h-full object-contain mix-blend-multiply filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 transform-gpu z-10 group-hover:scale-110 ${client.file.includes("white") ? "brightness-0 opacity-40 group-hover:brightness-0 group-hover:opacity-100" : ""} ${client.file.includes("dnata") ? "scale-75 group-hover:scale-90" : ""}`}
+              alt={`${client.name} Logo`}
+              style="-webkit-backface-visibility: hidden; -webkit-transform: translate3d(0, 0, 0);"
+            />
+          </a>
+        ))}
+
+        <!-- N+1 Customer CTA Block -->
+        <a 
+          href={translatePath('/contatti')} 
+          class="group client-card opacity-0 translate-y-8 relative h-40 bg-accent rounded-2xl border border-transparent shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col items-center justify-center p-6 outline-none no-underline text-center"
+        >
+          <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+          <span class="text-white font-bold text-lg z-10 group-hover:-translate-y-3 transition-transform duration-300 leading-tight">Your logo here?</span>
+          <span class="text-white/90 text-sm absolute bottom-6 z-10 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 transition-all duration-300 font-medium">Get in touch &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate Header
+  gsap.to(".client-header", {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power3.out",
+  });
+
+  // Staggered animation for logo cards
+  gsap.to(".client-card", {
+    scrollTrigger: {
+      trigger: ".client-card",
+      start: "top 85%",
+    },
+    y: 0,
+    opacity: 1,
+    duration: 0.8,
+    stagger: 0.05,
+    ease: "back.out(1.2)"
+  });
+</script>

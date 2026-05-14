@@ -7,11 +7,12 @@ import ServiceGrid from '../../components/ServiceGrid.astro';
 import CaseStudyOverlay from '../../components/CaseStudyOverlay.astro';
 import Testimonials from '../../components/Testimonials.astro';
 import Footer from '../../components/Footer.astro';
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../../i18n/utils';
 
 // Looka Theme Recreation - Main Entry
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <Layout title={lang === 'it' ? "Sunnyvale S.r.l. | IT Enterprise Strategico" : "Sunnyvale S.r.l. | Strategic Enterprise IT"}>
@@ -28,11 +29,14 @@ const t = useTranslations(lang);
       
       <div class="max-w-4xl mx-auto px-6 text-center about-anim opacity-0 translate-y-4 relative z-10">
         <h2 class="text-2xl md:text-4xl font-bold text-primary leading-tight mb-6">
-          {lang === 'it' ? "Non ci limitiamo a consigliare la tecnologia. Progettiamo l'infrastruttura che alimenta la crescita della tua azienda." : "We don't just recommend technology. We engineer the infrastructure that powers your business growth."}
+          {t('about.title')}
         </h2>
-        <p class="text-lg text-foreground-muted">
-          {lang === 'it' ? "Fondata da veterani del settore, Sunnyvale colma il divario tra strategia di alto livello ed esecuzione tecnica. Collaboriamo con CIO e leader tecnologici per affrontare trasformazioni digitali complesse." : "Founded by industry veterans, Sunnyvale bridges the gap between high-level strategy and technical execution. We partner with CIOs and technology leaders to navigate complex digital transformations."}
+        <p class="text-lg text-foreground-muted mb-8 leading-relaxed">
+          {t('about.p1')}
         </p>
+        <a href={translatePath('/chi-siamo')} class="inline-flex items-center text-accent font-semibold hover:text-primary transition-colors text-lg">
+          <span set:html={t('about.read_more')} />
+        </a>
       </div>
     </section>
 
@@ -50,10 +54,10 @@ const t = useTranslations(lang);
           {lang === 'it' ? "Prenota una call conoscitiva con i nostri architetti senior per discutere delle tue sfide e obiettivi specifici." : "Schedule a discovery call with our senior architects to discuss your specific challenges and objectives."}
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="#" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-accent bg-white hover:bg-slate-50 rounded transition-colors shadow-lg">
+          <a href={translatePath('/contatti')} class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-accent bg-white hover:bg-slate-50 rounded transition-colors shadow-lg">
             {lang === 'it' ? "Prenota una Call" : "Schedule Discovery Call"}
           </a>
-          <a href="#" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-accent-dark hover:bg-primary rounded transition-colors border border-transparent">
+          <a href={translatePath('/contatti')} class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-accent-dark hover:bg-primary rounded transition-colors border border-transparent">
             {lang === 'it' ? "Contatta le Vendite" : "Contact Sales"}
           </a>
         </div>
