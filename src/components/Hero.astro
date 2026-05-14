@@ -33,6 +33,30 @@ const slideStyles = Array.from({length: slideCount}).map((_, i) =>
     ${visiblePercent + fadePercent}% { opacity: 0; transform: scale(1.05); }
     100% { opacity: 0; }
   }
+
+  @keyframes noise-anim {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -5%); }
+    20% { transform: translate(-10%, 5%); }
+    30% { transform: translate(5%, -10%); }
+    40% { transform: translate(-5%, 15%); }
+    50% { transform: translate(-10%, 5%); }
+    60% { transform: translate(15%, 0); }
+    70% { transform: translate(0, 15%); }
+    80% { transform: translate(3%, 35%); }
+    90% { transform: translate(-10%, 10%); }
+  }
+
+  .tv-noise {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    animation: noise-anim 0.2s infinite steps(2);
+    pointer-events: none;
+  }
 `}></style>
 
 <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-900">
@@ -46,6 +70,11 @@ const slideStyles = Array.from({length: slideCount}).map((_, i) =>
   
   <!-- CRT Scanline Overlay -->
   <div class="absolute inset-0 z-0 pointer-events-none mix-blend-overlay opacity-30" style="background: repeating-linear-gradient(transparent, transparent 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 4px);"></div>
+  
+  <!-- TV Static Noise Overlay -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none mix-blend-overlay opacity-20">
+    <div class="tv-noise"></div>
+  </div>
   
   <!-- Dark Gradient Overlay (Darkens left side for text readability) -->
   <div class="absolute inset-0 bg-gradient-to-r from-slate-950 from-10% via-slate-950/80 via-40% to-transparent z-0"></div>

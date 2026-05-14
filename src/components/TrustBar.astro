@@ -91,12 +91,13 @@ const t = useTranslations(lang);
                 href={client.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-full h-full flex items-center justify-center"
+                class="w-full h-full flex items-center justify-center outline-none border-none no-underline"
               >
                 <img
                   src={`/clients/${client.file}`}
-                  class={`max-w-full max-h-full object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 ${client.file.includes("white") ? "brightness-0 opacity-40 hover:brightness-0 hover:opacity-80" : ""} ${client.file.includes("dnata") ? "scale-50" : ""}`}
+                  class={`max-w-full max-h-full object-contain grayscale opacity-50 mix-blend-multiply hover:grayscale-0 hover:opacity-100 transition-all duration-300 transform-gpu border-none outline-none ${client.file.includes("white") ? "brightness-0 opacity-40 hover:brightness-0 hover:opacity-80" : ""} ${client.file.includes("dnata") ? "scale-50" : ""}`}
                   alt="Client Logo"
+                  style="-webkit-backface-visibility: hidden; -webkit-transform: translate3d(0, 0, 0);"
                 />
               </a>
             </div>
@@ -112,12 +113,13 @@ const t = useTranslations(lang);
                 href={client.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-full h-full flex items-center justify-center"
+                class="w-full h-full flex items-center justify-center outline-none border-none no-underline"
               >
                 <img
                   src={`/clients/${client.file}`}
-                  class={`max-w-full max-h-full object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 ${client.file.includes("white") ? "brightness-0 opacity-40 hover:brightness-0 hover:opacity-80" : ""} ${client.file.includes("dnata") ? "scale-50" : ""}`}
+                  class={`max-w-full max-h-full object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 transform-gpu border-none outline-none ${client.file.includes("white") ? "brightness-0 opacity-40 hover:brightness-0 hover:opacity-80" : ""} ${client.file.includes("dnata") ? "scale-50" : ""}`}
                   alt="Client Logo"
+                  style="-webkit-backface-visibility: hidden; -webkit-transform: translate3d(0, 0, 0);"
                 />
               </a>
             </div>
